@@ -1,10 +1,30 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import LayoutWrapper from "./wrappers/LayoutWrapper.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/app/store.js";
 
 
 const routes = [
   {
     path: '/',
-    element: <h1 className="text-3xl m-4">Hello World!</h1>
+    element: <LayoutWrapper />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />
+      },
+      {
+        path: "register",
+        element: <RegisterPage />
+      },
+      {
+        path: "login",
+        element: <LoginPage />
+      }
+    ]
   }
 ];
 
@@ -19,12 +39,16 @@ const router = createBrowserRouter(routes, {
 });
 
 const App = () => {
-  return <RouterProvider
-    router={router}
-    future={{
-      v7_startTransition: true,
-    }}
-  />;
+  return <>
+    <Provider store={store}>
+      <RouterProvider
+        router={router}
+        future={{
+          v7_startTransition: true,
+        }}
+      />
+    </Provider>
+  </>
 }
 
 export default App;
