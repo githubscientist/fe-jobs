@@ -12,24 +12,24 @@ const getNavigation = (user) => {
     } else if (user) {
         if (user.role === 'admin') {
             return [
-                { name: 'Dashboard', href: '#', current: true },
+                { name: 'Dashboard', href: '/admin/dashboard', current: true },
                 { name: 'Manage Recruiters', href: '#', current: false },
                 { name: 'Manage Companies', href: '#', current: false },
-                { name: 'Logout', href: '#', current: false },
+                { name: 'Logout', href: '/admin/dashboard/logout', current: false },
             ]
         } else if (user.role === 'user') {
             return [
-                { name: 'Dashboard', href: '#', current: true },
+                { name: 'Dashboard', href: '/dashboard', current: true },
                 { name: 'Profile', href: '#', current: false },
                 { name: 'Applications', href: '#', current: false },
-                { name: 'Logout', href: '#', current: false },
+                { name: 'Logout', href: '/dashboard/logout', current: false },
             ]
         } else if (user.role === 'recruiter') {
             return [
-                { name: 'Dashboard', href: '#', current: true },
+                { name: 'Dashboard', href: '/recruiter/dashboard', current: true },
                 { name: 'Profile', href: '#', current: false },
                 { name: 'Job Postings', href: '#', current: false },
-                { name: 'Logout', href: '#', current: false },
+                { name: 'Logout', href: '/recruiter/dashboard/logout', current: false },
             ]
         }
     }
@@ -76,6 +76,11 @@ export default function NavBar({ user }) {
                                         {item.name}
                                     </Link>
                                 ))}
+                                {
+                                    user && (
+                                        <p className='text-blue-300 px-3 py-2 text-sm font-medium'>{user.email}</p>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
@@ -156,6 +161,11 @@ export default function NavBar({ user }) {
                             {item.name}
                         </DisclosureButton>
                     ))}
+                    {
+                        user && (
+                            <p className='text-blue-300 px-3 py-2 text-sm font-medium'>{user.email}</p>
+                        )
+                    }
                 </div>
             </DisclosurePanel>
         </Disclosure>
