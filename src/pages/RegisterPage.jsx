@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { selectEmail, selectName, selectPassword, setEmail, setName, setPassword } from '../redux/features/auth/registerSlice';
+import authServices from "../services/authServices";
 
 const RegisterPage = () => {
 
@@ -15,7 +16,23 @@ const RegisterPage = () => {
         e.preventDefault();
 
         // hanlde register logic here
-        console.log("Registering user:", { name, email, password });
+        authServices.register({ name, email, password })
+            .then((response) => {
+                console.log(response.data.message);
+
+                // clear the form
+                dispatch(setName(''));
+                dispatch(setEmail(''));
+                dispatch(setPassword(''));
+
+                // redirect to login page
+                setTimeout(() => {
+                    navigate('/login');
+                }, 500);
+            })
+            .catch((error) => {
+                console.error(error.response.data.message);
+            });
     }
 
     return (
