@@ -15,7 +15,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 import RecruiterWrapper from "./wrappers/RecruiterWrapper.jsx";
 import RecruiterDashboard from "./pages/recruiter/RecruiterDashboard.jsx";
 import Jobs from "./pages/user/Jobs.jsx";
-import jobsLoader from "./loaders/unit/jobsLoader.js";
+import jobsLoader from "./loaders/combined/jobsLoader.js";
 
 
 const routes = [
