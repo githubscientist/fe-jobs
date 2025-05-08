@@ -21,7 +21,7 @@ const getNavigation = (user) => {
             return [
                 { name: 'Dashboard', href: '/dashboard', current: true },
                 { name: 'Jobs', href: '/dashboard/jobs', current: false },
-                { name: 'Applications', href: '#', current: false },
+                { name: 'Applications', href: '/dashboard/applications', current: false },
                 { name: 'Profile', href: '#', current: false },
                 { name: 'Logout', href: '/dashboard/logout', current: false },
             ]

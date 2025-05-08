@@ -16,6 +16,7 @@ import RecruiterWrapper from "./wrappers/RecruiterWrapper.jsx";
 import RecruiterDashboard from "./pages/recruiter/RecruiterDashboard.jsx";
 import Jobs from "./pages/user/Jobs.jsx";
 import jobsLoader from "./loaders/combined/jobsLoader.js";
+import Applications from "./pages/user/Applications.jsx";
 
 
 const routes = [
@@ -54,6 +55,12 @@ const routes = [
         element: <Jobs />,
         loader: jobsLoader,
         hydrateFallbackElement: <div>Loading Jobs...</div>,
+      },
+      {
+        path: "applications",
+        element: <Applications />,
+        loader: jobsLoader,
+        hydrateFallbackElement: <div>Loading Applications...</div>,
       },
       {
         path: "logout",
