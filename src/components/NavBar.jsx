@@ -20,8 +20,9 @@ const getNavigation = (user) => {
         } else if (user.role === 'user') {
             return [
                 { name: 'Dashboard', href: '/dashboard', current: true },
-                { name: 'Profile', href: '#', current: false },
+                { name: 'Jobs', href: '/dashboard/jobs', current: false },
                 { name: 'Applications', href: '#', current: false },
+                { name: 'Profile', href: '#', current: false },
                 { name: 'Logout', href: '/dashboard/logout', current: false },
             ]
         } else if (user.role === 'recruiter') {
