@@ -13,8 +13,7 @@ const getNavigation = (user) => {
         if (user.role === 'admin') {
             return [
                 { name: 'Dashboard', href: '/admin/dashboard', current: true },
-                { name: 'Manage Recruiters', href: '#', current: false },
-                { name: 'Manage Companies', href: '#', current: false },
+                { name: 'Manage Users', href: '/admin/dashboard/users', current: false },
                 { name: 'Logout', href: '/admin/dashboard/logout', current: false },
             ]
         } else if (user.role === 'user') {

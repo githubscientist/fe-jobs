@@ -17,6 +17,10 @@ import RecruiterDashboard from "./pages/recruiter/RecruiterDashboard.jsx";
 import Jobs from "./pages/user/Jobs.jsx";
 import jobsLoader from "./loaders/combined/jobsLoader.js";
 import Applications from "./pages/user/Applications.jsx";
+import ManageUsers from "./wrappers/ManageUsers.jsx";
+import ViewUsers from "./pages/admin/ViewUsers.jsx";
+import AddUser from "./pages/admin/AddUser.jsx";
+import usersLoader from "./loaders/unit/usersLoader.js";
 
 
 const routes = [
@@ -77,6 +81,22 @@ const routes = [
       {
         index: true,
         element: <AdminDashboard />
+      },
+      {
+        path: "users",
+        element: <ManageUsers />,
+        children: [
+          {
+            index: true,
+            element: <ViewUsers />,
+            loader: usersLoader,
+            hydrateFallbackElement: <div>Loading Users...</div>,
+          },
+          {
+            path: "add",
+            element: <AddUser />
+          }
+        ]
       },
       {
         path: "logout",
